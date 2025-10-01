@@ -1,0 +1,16 @@
+# K8s/redis/user-redis-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-redis-config
+  namespace: innowise
+data:
+  redis.conf: |
+    bind 0.0.0.0
+    protected-mode no
+    port 6379
+    appendonly yes
+    appendfsync everysec
+    save ""
+    maxmemory 200mb
+    maxmemory-policy allkeys-lru

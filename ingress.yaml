@@ -1,0 +1,23 @@
+# K8s/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: microservices-ingress
+  namespace: innowise
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: my-microservices.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway
+                port:
+                  number: 8083
+
+
+#kubectl patch svc ingress-nginx-controller -n ingress-nginx --type merge -p "{\"spec\":{\"type\":\"LoadBalancer\"}}"
+#minikube tunnel

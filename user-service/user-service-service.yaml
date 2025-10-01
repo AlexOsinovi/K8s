@@ -1,0 +1,13 @@
+# K8s/user-service/user-service-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+  namespace: innowise
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: user-service
+  type: ClusterIP

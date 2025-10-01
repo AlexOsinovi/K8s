@@ -1,0 +1,13 @@
+# K8s/auth-service/auth-service-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+  namespace: innowise
+spec:
+  ports:
+    - port: 8081
+      targetPort: 8081
+  selector:
+    app: auth-service
+  type: ClusterIP

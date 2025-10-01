@@ -1,0 +1,13 @@
+# K8s/redis/user-redis-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-redis
+  namespace: innowise
+spec:
+  clusterIP: None
+  ports:
+    - port: 6379
+      targetPort: 6379
+  selector:
+    app: user-redis

@@ -1,0 +1,13 @@
+# K8s/order-db/order-db-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-db
+  namespace: innowise
+spec:
+  clusterIP: None
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    app: order-db
