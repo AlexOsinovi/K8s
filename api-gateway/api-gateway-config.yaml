@@ -1,9 +1,8 @@
-# api-gateway-config.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: api-gateway-config
-  namespace: default
+  namespace: innowise
 data:
   SERVER_PORT: "8083"
   LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY: "DEBUG"

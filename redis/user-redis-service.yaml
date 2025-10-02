@@ -1,4 +1,3 @@
-# K8s/redis/user-redis-service.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -11,3 +10,7 @@ spec:
       targetPort: 6379
   selector:
     app: user-redis
+
+
+
+

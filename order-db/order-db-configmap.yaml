@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: order-db-config
+  namespace: innowise
+data:
+  postgresql.conf: |
+    listen_addresses = '*'
+    max_connections = 100
+    shared_buffers = 128MB
+    effective_cache_size = 384MB
+    work_mem = 4MB
+    log_min_duration_statement = 250

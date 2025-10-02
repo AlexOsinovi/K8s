@@ -1,4 +1,4 @@
-# mongo/mongodb-statefulset.yaml
+# mongodb-statefulset.yaml (ИСПРАВЛЕНО)
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -29,13 +29,17 @@ spec:
           livenessProbe:
             tcpSocket:
               port: 27017
-            initialDelaySeconds: 60
+            initialDelaySeconds: 100
             periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
           readinessProbe:
             tcpSocket:
               port: 27017
-            initialDelaySeconds: 60
-            periodSeconds: 5
+            initialDelaySeconds: 100
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
           resources:
             requests:
               memory: "256Mi"

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-service-config
+  namespace: innowise
+data:
+  SERVER_PORT: "8080"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://user-db:5432/user_service_db"
+  SPRING_DATASOURCE_DRIVER_CLASS_NAME: "org.postgresql.Driver"
+  SPRING_JPA_HIBERNATE_DDL_AUTO: "none"
+  SPRING_LIQUIBASE_ENABLED: "true"
+  SPRING_LIQUIBASE_CHANGE_LOG: "classpath:db/changelog/db.changelog-master.yaml"
+  SPRING_CACHE_TYPE: "redis"
+  SPRING_DATA_REDIS_HOST: "user-redis"
+  SPRING_DATA_REDIS_PORT: "6379"
+  SPRING_CACHE_REDIS_TIME_TO_LIVE: "600000"
+  SPRING_CACHE_REDIS_CACHE_NULL_VALUES: "false"
+  MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: "health"
+  MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED: "true"

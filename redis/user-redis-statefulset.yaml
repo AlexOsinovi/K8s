@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: user-redis
+  namespace: innowise
+spec:
+  serviceName: user-redis
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-redis
+  template:
+    metadata:
+      labels:
+        app: user-redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.4.2-alpine
+          command:
+            - redis-server
+            - /etc/redis/redis.conf
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - mountPath: /data
+              name: redis-data
+            - mountPath: /etc/redis
+              name: config
+          livenessProbe:
+            tcpSocket:
+              port: 6379
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: 6379
+            initialDelaySeconds: 60
+            periodSeconds: 5
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
+      volumes:
+        - name: config
+          configMap:
+            name: user-redis-config
+  volumeClaimTemplates:
+    - metadata:
+        name: redis-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
