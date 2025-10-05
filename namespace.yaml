@@ -3,3 +3,4 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: innowise
+# kubectl config set-context --current --namespace=innowise

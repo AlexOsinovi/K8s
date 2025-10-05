@@ -19,5 +19,6 @@ spec:
                   number: 8083
 
 
-#kubectl patch svc ingress-nginx-controller -n ingress-nginx --type merge -p "{\"spec\":{\"type\":\"LoadBalancer\"}}"
-#minikube tunnel
+# kubectl patch svc ingress-nginx-controller -n ingress-nginx --type merge -p "{\"spec\":{\"type\":\"LoadBalancer\"}}"
+# kubectl get svc -n ingress-nginx
+# minikube tunnel
