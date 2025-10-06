@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-redis-config
+  namespace: innowise
+data:
+  redis.conf: |
+    bind 0.0.0.0
+    port 6379
+    appendonly yes                
+    appendfsync everysec          
+    auto-aof-rewrite-percentage 100
+    auto-aof-rewrite-min-size 64mb
+    save 900 1                   
+    save 300 10                    
+    save 60 10000                  
+    maxmemory 200mb  
+    maxmemory-policy allkeys-lru

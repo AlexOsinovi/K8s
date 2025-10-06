@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gateway-config
+  namespace: innowise
+data:
+  SERVER_PORT: "8083"
+  LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY: "DEBUG"
+  LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD_GATEWAY: "DEBUG"
+  AUTH_SERVICE_URL: "http://auth-service:8081"
+  USER_SERVICE_URL: "http://user-service:8080"
+  ORDER_SERVICE_URL: "http://order-service:8082"
+  SPRING_DATA_MONGODB_DATABASE: "payment_service_db"
+  SPRING_DATA_MONGODB_HOST: "payment-mongo"
+  SPRING_DATA_MONGODB_PORT: "27017"
+  MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: "health"
+  MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED: "true"
+  JWT_ACCESS_TOKEN_EXPIRATION: "3600"
+  JWT_REFRESH_TOKEN_EXPIRATION: "604800"
+  RANDOM_API_URL: "https://www.random.org"
